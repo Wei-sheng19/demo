@@ -1,0 +1,394 @@
+# 权限配置
+permissions:
+# 用户管理权限
+  - name: "查看用户基本信息"
+    description: "允许查看用户的基本信息"
+    resource: "user"
+    operation: "read"
+    field: "basic_info"
+  
+  - name: "更新用户基本信息"
+    description: "允许更新用户的基本信息"
+    resource: "user"
+    operation: "update"
+    field: "basic_info"
+  
+  - name: "删除用户"
+    description: "允许删除用户"
+    resource: "user"
+    operation: "delete"
+    field: "*"
+  
+  - name: "管理用户角色"
+    description: "允许管理用户的角色分配"
+    resource: "user"
+    operation: "update"
+    field: "roles"
+
+# 建筑管理权限
+  - name: "查看建筑基本信息"
+    description: "允许查看建筑的基本信息"
+    resource: "building"
+    operation: "read"
+    field: "basic_info"
+  
+  - name: "更新建筑基本信息"
+    description: "允许更新建筑的基本信息"
+    resource: "building"
+    operation: "update"
+    field: "basic_info"
+  
+  - name: "查看建筑土地档案"
+    description: "允许查看建筑的土地档案信息"
+    resource: "building"
+    operation: "read"
+    field: "land_archives"
+  
+  - name: "管理建筑土地档案"
+    description: "允许管理建筑的土地档案"
+    resource: "building"
+    operation: "update"
+    field: "land_archives"
+  
+  - name: "查看建筑分区"
+    description: "允许查看建筑的功能分区"
+    resource: "building"
+    operation: "read"
+    field: "zones"
+
+  - name: "查看建筑地下室"
+    description: "允许查看建筑的地下室信息"
+    resource: "building"
+    operation: "read"
+    field: "basement_info" 
+
+# 楼层管理权限
+  - name: "查看楼层信息"
+    description: "允许查看楼层的基本信息"
+    resource: "floor"
+    operation: "read"
+    field: "basic_info"
+  
+  - name: "更新楼层信息"
+    description: "允许更新楼层信息"
+    resource: "floor"
+    operation: "update"
+    field: "basic_info"
+  
+  - name: "查看楼层房间列表"
+    description: "允许查看楼层的房间列表"
+    resource: "floor"
+    operation: "read"
+    field: "rooms"
+
+  - name: "查看楼层配电室"
+    description: "允许查看楼层的配电室信息"
+    resource: "floor"
+    operation: "read"
+    field: "power_room"
+
+# 房间管理权限
+  - name: "查看房间基本信息"
+    description: "允许查看房间的基本信息"
+    resource: "room"
+    operation: "read"
+    field: "basic_info"
+  
+  - name: "更新房间基本信息"
+    description: "允许更新房间的基本信息"
+    resource: "room"
+    operation: "update"
+    field: "basic_info"
+  
+  - name: "查看房间功能信息"
+    description: "允许查看房间的功能信息"
+    resource: "room"
+    operation: "read"
+    field: "function"
+  
+  - name: "更新房间功能信息"
+    description: "允许更新房间的功能信息"
+    resource: "room"
+    operation: "update"
+    field: "function"
+
+  - name: "查看房间详情"
+    description: "允许查看房间的详细信息"
+    resource: "room"
+    operation: "read"
+    field: "details"
+
+# 运维管理权限
+  - name: "查看运维基本信息"
+    description: "允许查看运维的基本信息"
+    resource: "maintenance"
+    operation: "read"
+    field: "basic_info"
+  
+  - name: "更新运维计划"
+    description: "允许更新运维计划"
+    resource: "maintenance"
+    operation: "update"
+    field: "plan"
+  
+  - name: "查看运维记录"
+    description: "允许查看运维记录"
+    resource: "maintenance"
+    operation: "read"
+    field: "records"
+  
+  - name: "创建运维记录"
+    description: "允许创建运维记录"
+    resource: "maintenance"
+    operation: "create"
+    field: "records"
+  
+  - name: "查看运维审计信息"
+    description: "允许查看运维审计信息"
+    resource: "maintenance"
+    operation: "read"
+    field: "audit_info"
+  
+  - name: "查看运维反馈"
+    description: "允许查看运维反馈信息"
+    resource: "maintenance"
+    operation: "read"
+    field: "feedback"
+
+# 变电站管理权限
+  - name: "查看变电站基本信息"
+    description: "允许查看变电站的基本信息"
+    resource: "substation"
+    operation: "read"
+    field: "basic_info"
+
+  - name: "查看变电站供电建筑"
+    description: "允许查看变电站供电的建筑列表"
+    resource: "substation"
+    operation: "read"
+    field: "buildings"
+
+  - name: "查看变电站配电室"
+    description: "允许查看变电站的配电室信息"
+    resource: "substation"
+    operation: "read"
+    field: "power_rooms"
+
+# 施工信息管理权限
+  - name: "查看施工基本信息"
+    description: "允许查看施工的基本信息"
+    resource: "construction"
+    operation: "read"
+    field: "basic_info"
+
+# 设备管理权限
+  - name: "查看设备基本信息"
+    description: "允许查看设备的基本信息"
+    resource: "equipment"
+    operation: "read"
+    field: "basic_info"
+
+  - name: "查看设备技术要求"
+    description: "允许查看设备的技术要求"
+    resource: "equipment"
+    operation: "read"
+    field: "technical_requirements"
+
+  - name: "查看设备供应商信息"
+    description: "允许查看设备的供应商信息"
+    resource: "equipment"
+    operation: "read"
+    field: "vendor_info"
+
+  - name: "查看设备生命周期预警"
+    description: "允许查看设备的生命周期预警信息"
+    resource: "equipment"
+    operation: "read"
+    field: "lifecycle_warning"
+
+# 功能分区权限
+  - name: "查看功能分区"
+    description: "允许查看功能分区信息"
+    resource: "zone_function"
+    operation: "read"
+    field: "*"
+
+# 系统管理权限
+  - name: "查看权限"
+    description: "允许查看权限列表"
+    resource: "permission"
+    operation: "read"
+    field: "*"
+  
+  - name: "管理权限"
+    description: "允许管理权限配置"
+    resource: "permission"
+    operation: "*"
+    field: "*"
+  
+  - name: "查看角色"
+    description: "允许查看角色列表"
+    resource: "role"
+    operation: "read"
+    field: "*"
+  
+  - name: "管理角色"
+    description: "允许管理角色配置"
+    resource: "role"
+    operation: "*"
+    field: "*"
+
+
+# 权限组配置
+permission_groups:
+  - name: "用户管理"
+    description: "用户管理相关权限组"
+    permissions:
+      - "查看用户基本信息"
+      - "更新用户基本信息"
+      - "删除用户"
+      - "管理用户角色"
+
+  - name: "建筑管理"
+    description: "建筑管理相关权限组"
+    permissions:
+      - "查看建筑基本信息"
+      - "更新建筑基本信息"
+      - "查看建筑土地档案"
+      - "管理建筑土地档案"
+      - "查看建筑分区"
+      - "查看建筑地下室"
+
+  - name: "楼层管理"
+    description: "楼层管理相关权限组"
+    permissions:
+      - "查看楼层信息"
+      - "更新楼层信息"
+      - "查看楼层房间列表"
+      - "查看楼层配电室"
+  - name: "房间管理"
+    description: "房间管理相关权限组"
+    permissions:
+      - "查看房间基本信息"
+      - "更新房间基本信息"
+      - "查看房间功能信息"
+      - "更新房间功能信息"
+      - "查看房间详情"
+  - name: "运维管理"
+    description: "运维管理相关权限组"
+    permissions:
+      - "查看运维基本信息"
+      - "更新运维计划"
+      - "查看运维记录"
+      - "创建运维记录"
+      - "查看运维反馈"
+  - name: "运维审计"
+    description: "运维审计相关权限组"
+    permissions:
+      - "查看运维审计信息"
+
+  - name: "系统管理"
+    description: "系统管理相关权限组"
+    permissions:
+      - "查看权限"
+      - "管理权限"
+      - "查看角色"
+      - "管理角色"
+  
+  - name: "变电站管理"
+    description: "变电站管理相关权限组"
+    permissions:
+      - "查看变电站基本信息"
+      - "查看变电站供电建筑"
+      - "查看变电站配电室"
+
+  - name: "施工管理"
+    description: "施工管理相关权限组"
+    permissions:
+      - "查看施工基本信息"
+      - "查看设备基本信息"
+      - "查看设备技术要求"
+      - "查看设备供应商信息"
+      - "查看设备生命周期预警"
+
+  - name: "功能分区管理"
+    description: "功能分区管理相关权限组"
+    permissions:
+      - "查看功能分区"
+
+# 角色配置
+roles:
+  - name: "访客"
+    description: "基本查看权限的访客角色"
+    permissions:
+      - "查看建筑基本信息"
+      - "查看楼层信息"
+      - "查看房间基本信息"
+    permission_groups: []
+    parent_role: null
+
+  - name: "普通用户"
+    description: "普通用户角色"
+    permissions:
+      - "查看房间功能信息"
+      - "查看运维基本信息"
+      - "查看设备基本信息"
+      - "查看设备技术要求"
+      - "查看变电站基本信息"
+      - "查看变电站供电建筑"
+      - "查看变电站配电室"
+      - "查看施工基本信息"
+    permission_groups:
+      - "房间管理"
+    parent_role: "访客"
+
+  - name: "运维人员"
+    description: "负责运维工作的人员"
+    permissions: []
+    permission_groups:
+      - "运维管理"
+      - "运维审计"
+      - "查看设备基本信息"
+      - "查看设备技术要求"
+    parent_role: "普通用户"
+
+  - name: "建筑管理员"
+    description: "负责建筑管理的管理员"
+    permissions: []
+    permission_groups:
+      - "建筑管理"
+      - "楼层管理"
+      - "变电站管理"
+      - "施工管理"
+      - "功能分区管理"
+    parent_role: "普通用户"
+
+  - name: "用户管理员"
+    description: "负责用户管理的管理员"
+    permissions: []
+    permission_groups:
+      - "用户管理"
+    parent_role: "普通用户"
+
+  - name: "审计员"
+    description: "负责审计工作的人员"
+    permissions: []
+    permission_groups:
+      - "运维审计"
+    parent_role: "普通用户"
+
+  - name: "系统管理员"
+    description: "系统最高权限管理员"
+    permissions: []
+    permission_groups:
+      - "系统管理"
+      - "用户管理"
+      - "建筑管理"
+      - "楼层管理"
+      - "房间管理"
+      - "运维管理"
+      - "运维审计"
+      - "变电站管理"
+      - "施工管理"
+      - "功能分区管理"
+    parent_role: null 
