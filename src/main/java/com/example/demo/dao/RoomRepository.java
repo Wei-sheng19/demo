@@ -19,4 +19,6 @@ public interface RoomRepository extends JpaRepository<Room, Long> {
     // 根据房间名称查找房间
     List<Room> findByRoomName(String roomName);
 
+    @Query("SELECT CASE WHEN COUNT(rd) > 0 THEN true ELSE false END FROM RoomDetails rd WHERE rd.room.id = :roomId")
+    boolean existsByRoomDetailsRoomId(@Param("roomId") Long roomId);
 } 
