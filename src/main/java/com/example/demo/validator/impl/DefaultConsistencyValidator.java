@@ -1,7 +1,7 @@
 package com.example.demo.validator.impl;
 
 import com.example.demo.validator.ConsistencyValidator;
-import com.example.demo.repository.*;
+import com.example.demo.dao.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.util.StringUtils;
