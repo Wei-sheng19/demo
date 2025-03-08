@@ -1,7 +1,7 @@
 package com.example.demo.service.impl;
 
 import com.example.demo.dao.CampusRepository;
-import com.example.demo.dto.CampusDTO;
+import com.example.demo.dto.campus.CampusDTO;
 import com.example.demo.entity.Campus;
 import com.example.demo.service.CampusService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,7 +21,7 @@ public class CampusServiceImpl implements CampusService {
     public CampusDTO getCampusInfo(Long campusId) {
         Optional<Campus> optionalCampus = campusRepository.findById(campusId);
         Campus campus = optionalCampus.orElseThrow(() -> new IllegalArgumentException("Campus not found with id: " + campusId));
-        return toCampusDTO(campus);
+        return CampusDTO.fromCampus(campus);
     }
 
     @Override
@@ -29,16 +29,8 @@ public class CampusServiceImpl implements CampusService {
     public CampusDTO getCampusInfoByName(String campusName) {
         Optional<Campus> optionalCampus = Optional.ofNullable(campusRepository.findByName(campusName));
         Campus campus = optionalCampus.orElseThrow(() -> new IllegalArgumentException("Campus not found with name: " + campusName));
-        return toCampusDTO(campus);
+        return CampusDTO.fromCampus(campus);
     }
 
-    private CampusDTO toCampusDTO(Campus campus) {
-        return new CampusDTO(
-            campus.getId(),
-            campus.getName(),
-            campus.getLocation(),
-            campus.getFloorPlan(),
-            campus.getThreeDModel()
-        );
-    }
+
 }

@@ -1,6 +1,6 @@
 package com.example.demo.service;
 
-import com.example.demo.dto.RoleDTO;
+import com.example.demo.dto.auth.RoleDTO;
 import java.util.List;
 import java.util.Set;
 

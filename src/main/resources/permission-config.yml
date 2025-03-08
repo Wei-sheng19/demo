@@ -98,7 +98,7 @@ permissions:
     description: "允许更新房间的基本信息"
     resource: "room"
     operation: "update"
-    field: "basic_info"
+    field: "*"
   
   - name: "查看房间功能信息"
     description: "允许查看房间的功能信息"
@@ -179,7 +179,25 @@ permissions:
     description: "允许查看施工的基本信息"
     resource: "construction"
     operation: "read"
-    field: "basic_info"
+    field: "*"
+
+  - name: "创建施工信息"
+    description: "允许创建施工信息"
+    resource: "construction"
+    operation: "create"
+    field: "*"
+
+  - name: "更新施工信息"
+    description: "允许更新施工信息"
+    resource: "construction"
+    operation: "update"
+    field: "*"
+
+  - name: "删除施工信息"
+    description: "允许删除施工信息"
+    resource: "construction"
+    operation: "delete"
+    field: "*"
 
 # 设备管理权限
   - name: "查看设备基本信息"
@@ -316,6 +334,14 @@ permission_groups:
     permissions:
       - "查看功能分区"
 
+  - name: "建设信息管理"
+    description: "建设信息管理相关权限组"
+    permissions:
+      - "查看施工基本信息"
+      - "创建施工信息"
+      - "更新施工信息"
+      - "删除施工信息"
+
 # 角色配置
 roles:
   - name: "访客"
@@ -391,4 +417,5 @@ roles:
       - "变电站管理"
       - "施工管理"
       - "功能分区管理"
+      - "建设信息管理"
     parent_role: null 

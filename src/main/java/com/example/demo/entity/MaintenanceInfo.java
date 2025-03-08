@@ -38,8 +38,8 @@ public class MaintenanceInfo {
     @Column(name = "service_rating")
     private Integer serviceRating;  // 优质服务等级（1-5星）
 
-    @Column(name = "audit_info")
-    private String auditInfo;
+    @Column(name = "standard_status")
+    private String standardStatus;//运维标准状态
 
     @Column(name = "created_at", nullable = false, columnDefinition = "DATETIME DEFAULT NOW()")
     private Date createdAt;  // 创建时间

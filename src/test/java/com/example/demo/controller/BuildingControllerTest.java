@@ -1,6 +1,6 @@
 package com.example.demo.controller;
 
-import com.example.demo.dto.BuildingZoneAggregationDTO;
+import com.example.demo.dto.building.BuildingZoneAggregationDTO;
 import com.example.demo.service.BuildingService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;

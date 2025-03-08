@@ -2,7 +2,7 @@ package com.example.demo.service.impl;
 
 import com.example.demo.dao.BuildingRepository;
 import com.example.demo.dao.ZoneFunctionRepository;
-import com.example.demo.dto.*;
+import com.example.demo.dto.building.*;
 import com.example.demo.entity.*;
 import com.example.demo.service.BuildingService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -39,18 +39,7 @@ public class BuildingServiceImpl implements BuildingService {
         if (buildingOptional.isPresent()) {
             // 如果找到建筑物，获取建筑物实体并创建并返回建筑物DTO对象
             Building building = buildingOptional.get();
-            return new BuildingDTO(
-                    building.getId(),
-                    building.getBuildingNumber(),
-                    building.getName(),
-                    building.getPurpose(),
-                    building.getConstructionDate(),
-                    building.getCompletionDate(),
-                    building.getFloornumber(),
-                    building.getBuildingScale(),
-                    building.getIsHeritageSite(),
-                    building.getPowerLoad()
-            );
+            return  BuildingDTO.fromBuilding(building);
         } else {
             // 如果未找到建筑物，抛出异常
             throw new RuntimeException("Building not found with ID: " + buildingId);
@@ -63,11 +52,7 @@ public class BuildingServiceImpl implements BuildingService {
         Building building = buildingRepository.findById(buildingId)
             .orElseThrow(() -> new IllegalArgumentException("Building not found with id: " + buildingId));
             
-        return new LandArchivesDTO(
-            building.getLandNumber(),
-            building.getLandArea(),
-            building.getLandUsage()
-        );
+        return  LandArchivesDTO.fromBuilding(building);
     }
 
     /**
@@ -84,11 +69,7 @@ public class BuildingServiceImpl implements BuildingService {
         if (buildingOptional.isPresent()) {
             // 如果找到建筑物，获取建筑物实体并创建并返回地下室信息DTO对象
             Building building = buildingOptional.get();
-            return new BasementInfoDTO(
-                    building.getBasementFloorCount(),
-                    building.getBasementArea(),
-                    building.getBasementUsage()
-            );
+            return BasementInfoDTO.fromBuilding(building);
         } else {
             // 如果未找到建筑物，抛出异常
             throw new RuntimeException("Building not found with ID: " + buildingId);
@@ -114,16 +95,7 @@ public class BuildingServiceImpl implements BuildingService {
 
         // 将楼层实体转换为FloorDTO对象列表
         return floors.stream()
-                .map(floor -> new FloorDTO(
-                        floor.getId(),
-                        floor.getFloorNumber(),
-                        floor.getPlan(),  // 对应 FloorDTO 中的 floorPlan
-                        floor.getHeight(),
-                        floor.getLoad(),
-                        floor.getMechanicalInfo(),  // 对应 FloorDTO 中的 mechanicalSupport
-                        floor.getConstructionDate(),
-                        floor.getRenovationDate()
-                ))
+                .map(floor -> FloorDTO.fromFloor(floor))
                 .collect(Collectors.toList());
     }
 
@@ -142,29 +114,15 @@ public class BuildingServiceImpl implements BuildingService {
         // 获取符合条件的房间列表
         List<Room> rooms = buildingRepository.findRoomsByBuildingIdAndFunctionId(buildingId, functionId);
 
-        // 转换为DTO
-        List<BuildingZoneAggregationDTO.RoomBasicDTO> roomDTOs = rooms.stream()
-                .map(room -> new BuildingZoneAggregationDTO.RoomBasicDTO(
-                        room.getRoomId(),
-                        room.getRoomNumber(),
-                        room.getRoomName(),
-                        room.getFloor().getFloorNumber()  // 正确引用 Room 的 floor 属性
-                ))
-                .collect(Collectors.toList());
+        return BuildingZoneAggregationDTO.fromZoneFunctionAndRooms(zoneFunction,rooms);
 
-        return new BuildingZoneAggregationDTO(
-                zoneFunction.getFunctionId(),
-                zoneFunction.getFunctionName(),
-                rooms.size(),
-                roomDTOs
-        );
     }
     
     @Override
     @Transactional(readOnly = true)
     public List<ZoneFunctionDTO> getAvailableZoneFunctions() {
         return zoneFunctionRepository.findAll().stream()
-            .map(zf -> new ZoneFunctionDTO(zf.getFunctionId(), zf.getFunctionName()))
+            .map(ZoneFunctionDTO::fromZoneFunction)
             .collect(Collectors.toList());
     }
 } 

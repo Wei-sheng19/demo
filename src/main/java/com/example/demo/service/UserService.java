@@ -1,9 +1,9 @@
 package com.example.demo.service;
 
-import com.example.demo.dto.UserDTO;
-import com.example.demo.dto.LoginRequestDTO;
-import com.example.demo.dto.LoginResponseDTO;
-import com.example.demo.dto.RegisterRequestDTO;
+import com.example.demo.dto.auth.UserDTO;
+import com.example.demo.dto.auth.LoginRequestDTO;
+import com.example.demo.dto.auth.LoginResponseDTO;
+import com.example.demo.dto.auth.RegisterRequestDTO;
 import java.util.List;
 import java.util.Set;
 

@@ -1,7 +1,10 @@
 package com.example.demo.controller;
 
 import com.example.demo.common.ApiResponse;
-import com.example.demo.dto.*;
+import com.example.demo.dto.auth.LoginRequestDTO;
+import com.example.demo.dto.auth.LoginResponseDTO;
+import com.example.demo.dto.auth.RegisterRequestDTO;
+import com.example.demo.dto.auth.UserDTO;
 import com.example.demo.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;

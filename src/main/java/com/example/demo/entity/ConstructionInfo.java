@@ -26,6 +26,7 @@ public class ConstructionInfo {
     @Column(name = "archival_info", length = 200)
     private String archivalInfo;
 
+    //运维标准状态
     @Column(name = "maintenance_standard_status", length = 200)
     private String maintenanceStandardStatus;
 

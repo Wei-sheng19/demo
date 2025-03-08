@@ -1,6 +1,6 @@
 package com.example.demo.service;
 
-import com.example.demo.dto.CampusDTO;
+import com.example.demo.dto.campus.CampusDTO;
 
 public interface CampusService {
     // 获取校园基本信息

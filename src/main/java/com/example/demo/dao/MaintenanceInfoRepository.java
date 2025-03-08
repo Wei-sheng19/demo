@@ -22,7 +22,7 @@ public interface MaintenanceInfoRepository extends JpaRepository<MaintenanceInfo
     @Query("SELECT mi FROM MaintenanceInfo mi WHERE mi.room.roomId = :roomId")
     Optional<MaintenanceInfo> findByRoomId(@Param("roomId") Long roomId);
     
-    // 查询审计信息
-    @Query("SELECT mi.auditInfo FROM MaintenanceInfo mi WHERE mi.maintenanceInfoId = :maintenanceId")
-    Optional<String> findAuditInfoById(@Param("maintenanceId") Long maintenanceId);
+    // 查询标准运维状态
+    @Query("SELECT mi.standardStatus FROM MaintenanceInfo mi WHERE mi.maintenanceInfoId = :maintenanceId")
+    Optional<String> findStandardStatusById(@Param("maintenanceId") Long maintenanceId);
 } 

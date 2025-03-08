@@ -2,8 +2,8 @@ package com.example.demo.service.impl;
 
 import com.example.demo.dao.PermissionRepository;
 import com.example.demo.dao.RoleRepository;
-import com.example.demo.dto.PermissionDTO;
-import com.example.demo.dto.RoleDTO;
+import com.example.demo.dto.auth.PermissionDTO;
+import com.example.demo.dto.auth.RoleDTO;
 import com.example.demo.entity.Permission;
 import com.example.demo.entity.Role;
 import com.example.demo.service.RoleService;
@@ -17,9 +17,9 @@ import java.util.Set;
 import java.util.stream.Collectors;
 
 import com.example.demo.dao.PermissionGroupRepository;
-import com.example.demo.dto.PermissionGroupDTO;
+import com.example.demo.dto.auth.PermissionGroupDTO;
 import com.example.demo.entity.PermissionGroup;
-import com.example.demo.dto.RoleDTO.ParentRoleDTO;
+import com.example.demo.dto.auth.RoleDTO.ParentRoleDTO;
 
 @Service
 public class RoleServiceImpl implements RoleService {

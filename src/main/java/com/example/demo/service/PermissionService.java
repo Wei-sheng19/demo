@@ -1,6 +1,6 @@
 package com.example.demo.service;
 
-import com.example.demo.dto.PermissionDTO;
+import com.example.demo.dto.auth.PermissionDTO;
 import java.util.List;
 
 public interface PermissionService {

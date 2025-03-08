@@ -1,7 +1,14 @@
 package com.example.demo.service;
 
-import com.example.demo.dto.*;
+import com.example.demo.dto.construction.AuditInfoUpdateDTO;
+import com.example.demo.dto.construction.ConstructionInfoCreateDTO;
+import com.example.demo.dto.construction.ConstructionInfoDTO;
+import com.example.demo.dto.construction.ConstructionInfoUpdateDTO;
+import com.example.demo.dto.equipment.MaterialEquipmentDTO;
+import com.example.demo.dto.equipment.MaterialEquipmentWithLocationDTO;
+
 import java.util.List;
+import java.util.Map;
 
 public interface ConstructionInfoService {
     // 基本的CRUD操作
@@ -33,4 +40,7 @@ public interface ConstructionInfoService {
     
     // 获取建筑的所有材料设备信息
     List<MaterialEquipmentWithLocationDTO> getBuildingMaterialsAndEquipments(Long buildingId);
+
+    // 更新运维标准状态
+    ConstructionInfoDTO updateMaintenanceStandard(Long roomId, Map<String, String> standardInfo);
 } 

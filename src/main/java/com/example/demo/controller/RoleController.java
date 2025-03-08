@@ -1,7 +1,7 @@
 package com.example.demo.controller;
 
 import com.example.demo.common.ApiResponse;
-import com.example.demo.dto.RoleDTO;
+import com.example.demo.dto.auth.RoleDTO;
 import com.example.demo.security.RequirePermission;
 import com.example.demo.service.RoleService;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -47,6 +47,13 @@ public class RoomDetails {
     @Column(name = "management_department", length = 100)
     private String managementDepartment;  // 管理归属部门
 
+
+    @Column(name = "site_audit", length = 100)
+    private String siteAudit;  //现场审核
+
+    @Column(name = "site_auditpicture", length = 100)
+    private String siteAuditpicture;  //现场审核照片
+
     // 枚举类定义房间用途
     public enum Purpose {
         CLASSROOM,  // 教室

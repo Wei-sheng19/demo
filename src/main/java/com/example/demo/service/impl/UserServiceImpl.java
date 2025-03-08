@@ -1,31 +1,30 @@
 package com.example.demo.service.impl;
 
-import com.example.demo.dto.UserDTO;
+import com.example.demo.dto.auth.UserDTO;
 import com.example.demo.dao.UserRepository; // 确保导入了 UserRepository
 import com.example.demo.entity.User;
 import com.example.demo.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service; // 添加 @Service 注解
-import com.example.demo.dto.LoginRequestDTO;
-import com.example.demo.dto.LoginResponseDTO;
+import com.example.demo.dto.auth.LoginRequestDTO;
+import com.example.demo.dto.auth.LoginResponseDTO;
 import com.example.demo.util.JwtUtil;
 import org.springframework.security.crypto.password.PasswordEncoder;
-import com.example.demo.dto.RegisterRequestDTO;
+import com.example.demo.dto.auth.RegisterRequestDTO;
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.stream.Collectors;
-import java.util.Arrays;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import lombok.extern.slf4j.Slf4j;
 import com.example.demo.dao.RoleRepository;
 import java.util.HashSet;
 import java.util.Set;
 import com.example.demo.entity.Role;
 import com.example.demo.entity.Permission;
-import com.example.demo.dto.RoleDTO;
-import com.example.demo.dto.PermissionDTO;
-import com.example.demo.dto.PermissionGroupDTO;
+import com.example.demo.dto.auth.RoleDTO;
+import com.example.demo.dto.auth.PermissionDTO;
+import com.example.demo.dto.auth.PermissionGroupDTO;
 import org.springframework.transaction.annotation.Transactional;
 import com.example.demo.entity.PermissionGroup;
 @Service // 确保使用 @Service 注解
@@ -263,15 +262,7 @@ public class UserServiceImpl implements UserService {
                         Set<PermissionDTO> permissionDTOs = new HashSet<>();
                         if (role.getPermissions() != null) {
                             permissionDTOs.addAll(role.getPermissions().stream()
-                                    .map(permission -> new PermissionDTO(
-                                        permission.getId(),
-                                        permission.getName(),
-                                        permission.getDescription(),
-                                        permission.getResource(),
-                                        permission.getOperation(),
-                                        permission.getField(),
-                                        permission.getAuthority()
-                                    ))
+                                    .map(PermissionDTO::fromPermission)
                                     .collect(Collectors.toSet()));
                         }
                         
@@ -283,15 +274,7 @@ public class UserServiceImpl implements UserService {
                                         Set<PermissionDTO> groupPermissionDTOs = null;
                                         if (group.getPermissions() != null) {
                                             groupPermissionDTOs = group.getPermissions().stream()
-                                                    .map(permission -> new PermissionDTO(
-                                                        permission.getId(),
-                                                        permission.getName(),
-                                                        permission.getDescription(),
-                                                        permission.getResource(),
-                                                        permission.getOperation(),
-                                                        permission.getField(),
-                                                        permission.getAuthority()
-                                                    ))
+                                                    .map(PermissionDTO::fromPermission)
                                                     .collect(Collectors.toSet());
                                         }
                                         return new PermissionGroupDTO(

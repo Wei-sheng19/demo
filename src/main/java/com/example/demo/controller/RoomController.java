@@ -7,6 +7,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Map;
+
 @RestController
 @RequestMapping("/api/room")
 public class RoomController {
@@ -58,6 +60,26 @@ public class RoomController {
                 "SUCCESS",
                 "Room details retrieved successfully",
                 roomService.getRoomDetails(roomId)
+            ));
+        } catch (Exception e) {
+            return ResponseEntity.badRequest().body(new ApiResponse<>(
+                "ERROR",
+                e.getMessage(),
+                null
+            ));
+        }
+    }
+
+    @RequirePermission(resource = "room", operation = "update", field = "site_audit")
+    @PutMapping("/{roomId}/site-audit")
+    public ResponseEntity<ApiResponse<?>> updateSiteAudit(
+            @PathVariable Long roomId,
+            @RequestBody Map<String, String> auditInfo) {
+        try {
+            return ResponseEntity.ok(new ApiResponse<>(
+                "SUCCESS",
+                "Room site audit information updated successfully",
+                roomService.updateSiteAudit(roomId, auditInfo)
             ));
         } catch (Exception e) {
             return ResponseEntity.badRequest().body(new ApiResponse<>(

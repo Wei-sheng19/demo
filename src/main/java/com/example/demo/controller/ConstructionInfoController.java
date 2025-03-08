@@ -1,7 +1,12 @@
 package com.example.demo.controller;
 
 import com.example.demo.common.ApiResponse;
-import com.example.demo.dto.*;
+import com.example.demo.dto.construction.AuditInfoUpdateDTO;
+import com.example.demo.dto.construction.ConstructionInfoCreateDTO;
+import com.example.demo.dto.construction.ConstructionInfoDTO;
+import com.example.demo.dto.construction.ConstructionInfoUpdateDTO;
+import com.example.demo.dto.equipment.MaterialEquipmentDTO;
+import com.example.demo.dto.equipment.MaterialEquipmentWithLocationDTO;
 import com.example.demo.security.RequirePermission;
 import com.example.demo.service.ConstructionInfoService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,6 +14,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Map;
 
 @RestController
 @RequestMapping("/api/construction-info")
@@ -280,6 +286,26 @@ public class ConstructionInfoController {
                 "SUCCESS",
                 "Building materials and equipments retrieved successfully",
                 materials
+            ));
+        } catch (Exception e) {
+            return ResponseEntity.badRequest().body(new ApiResponse<>(
+                "ERROR",
+                e.getMessage(),
+                null
+            ));
+        }
+    }
+
+    @RequirePermission(resource = "construction", operation = "update", field = "standard")
+    @PutMapping("/room/{roomId}/maintenance-standard")
+    public ResponseEntity<ApiResponse<?>> updateMaintenanceStandard(
+            @PathVariable Long roomId,
+            @RequestBody Map<String, String> standardInfo) {
+        try {
+            return ResponseEntity.ok(new ApiResponse<>(
+                "SUCCESS",
+                "Maintenance standard status updated successfully",
+                constructionInfoService.updateMaintenanceStandard(roomId, standardInfo)
             ));
         } catch (Exception e) {
             return ResponseEntity.badRequest().body(new ApiResponse<>(

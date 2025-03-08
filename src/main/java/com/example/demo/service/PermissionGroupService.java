@@ -1,6 +1,6 @@
 package com.example.demo.service;
 
-import com.example.demo.dto.PermissionGroupDTO;
+import com.example.demo.dto.auth.PermissionGroupDTO;
 import java.util.List;
 import java.util.Set;
 

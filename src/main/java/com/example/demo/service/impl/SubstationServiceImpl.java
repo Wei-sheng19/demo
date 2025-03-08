@@ -1,9 +1,9 @@
 package com.example.demo.service.impl;
 
 import com.example.demo.dao.SubstationRepository;
-import com.example.demo.dto.BuildingBasicDTO;
-import com.example.demo.dto.FloorPowerRoomDTO;
-import com.example.demo.dto.SubstationDTO;
+import com.example.demo.dto.building.BuildingBasicDTO;
+import com.example.demo.dto.equipment.FloorPowerRoomDTO;
+import com.example.demo.dto.equipment.SubstationDTO;
 import com.example.demo.entity.FloorPowerRoom;
 import com.example.demo.service.SubstationService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -60,15 +60,7 @@ public class SubstationServiceImpl implements SubstationService {
         List<FloorPowerRoom> floorPowerRooms = substation.getFloorPowerRooms();
 
         return floorPowerRooms.stream()
-                .map(powerRoom -> new FloorPowerRoomDTO(
-                        powerRoom.getId(),
-                        powerRoom.getAverageReference(),
-                        powerRoom.getMinLoadRange(),
-                        powerRoom.getMaxLoadRange(),
-                        powerRoom.getDesignLoad(),
-                        powerRoom.getSupportableLoad(),
-                        powerRoom.getActualOperationData(),
-                        powerRoom.getFloor() != null ? "Floor " + powerRoom.getFloor().getFloorNumber() : "N/A"))
+                .map(FloorPowerRoomDTO::fromFloorPowerRoom)
                 .toList();
     }
 

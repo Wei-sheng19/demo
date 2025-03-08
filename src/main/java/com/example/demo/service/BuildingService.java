@@ -1,11 +1,11 @@
 package com.example.demo.service;
 
-import com.example.demo.dto.BuildingDTO;
-import com.example.demo.dto.LandArchivesDTO;
-import com.example.demo.dto.BasementInfoDTO;
-import com.example.demo.dto.ZoneFunctionDTO;
-import com.example.demo.dto.FloorDTO;
-import com.example.demo.dto.BuildingZoneAggregationDTO;
+import com.example.demo.dto.building.BuildingDTO;
+import com.example.demo.dto.building.LandArchivesDTO;
+import com.example.demo.dto.building.BasementInfoDTO;
+import com.example.demo.dto.building.ZoneFunctionDTO;
+import com.example.demo.dto.building.FloorDTO;
+import com.example.demo.dto.building.BuildingZoneAggregationDTO;
 import java.util.List;
 
 public interface BuildingService {

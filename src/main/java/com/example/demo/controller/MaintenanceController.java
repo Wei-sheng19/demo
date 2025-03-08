@@ -51,13 +51,13 @@ public class MaintenanceController {
     }
     
     @RequirePermission(resource = "maintenance", operation = "read", field = "audit_info")
-    @GetMapping("/{maintenanceId}/audit")
+    @GetMapping("/{maintenanceId}/standardStatus")
     public ResponseEntity<ApiResponse<?>> getAuditInfo(@PathVariable Long maintenanceId) {
         try {
             return ResponseEntity.ok(new ApiResponse<>(
                 "SUCCESS",
                 "Audit information retrieved successfully",
-                maintenanceService.getAuditInfo(maintenanceId)
+                maintenanceService.getStandardStatus(maintenanceId)
             ));
         } catch (Exception e) {
             return ResponseEntity.badRequest().body(new ApiResponse<>(

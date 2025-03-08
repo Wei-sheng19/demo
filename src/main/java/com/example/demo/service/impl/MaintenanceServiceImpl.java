@@ -1,7 +1,8 @@
 package com.example.demo.service.impl;
 
 import com.example.demo.dao.*;
-import com.example.demo.dto.*;
+import com.example.demo.dto.construction.FeedbackRecordDTO;
+import com.example.demo.dto.maintenance.MaintenanceRecordDTO;
 import com.example.demo.entity.*;
 import com.example.demo.service.MaintenanceService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,11 +24,7 @@ public class MaintenanceServiceImpl implements MaintenanceService {
     public List<MaintenanceRecordDTO> getMaintenanceRecords(Long roomId) {
     Optional<MaintenanceInfo> maintenanceInfos = maintenanceInfoRepository.findByRoomId(roomId);
     return maintenanceInfos.stream()
-            .map(maintenanceInfo -> new MaintenanceRecordDTO(
-                    maintenanceInfo.getMaintenanceInfoId(),
-                   maintenanceInfo.getBasicMaintenanceInfo(),
-                    maintenanceInfo.getLaterMaintenance(),
-                    maintenanceInfo.getRepairRecords()))
+            .map(MaintenanceRecordDTO::fromMaintenanceInfo)
             .collect(Collectors.toList());
 }
     @Override
@@ -35,18 +32,14 @@ public class MaintenanceServiceImpl implements MaintenanceService {
     public List<FeedbackRecordDTO> getFeedbackRecords(Long roomId) {
     Optional<MaintenanceInfo> maintenanceInfos = maintenanceInfoRepository.findByRoomId(roomId);
     return maintenanceInfos.stream()
-            .map(maintenanceInfo -> new FeedbackRecordDTO(
-                   maintenanceInfo.getMaintenanceInfoId(),
-                    maintenanceInfo.getRegularFeedback(),
-                    maintenanceInfo.getUserEvaluation(),
-                    maintenanceInfo.getServiceRating()))
+            .map(FeedbackRecordDTO::fromMaintenanceInfo)
             .collect(Collectors.toList());
 }
 
     @Override
     @Transactional(readOnly = true)
-    public String getAuditInfo(Long maintenanceId) {
-        return maintenanceInfoRepository.findAuditInfoById(maintenanceId)
+    public String getStandardStatus(Long maintenanceId) {
+        return maintenanceInfoRepository.findStandardStatusById(maintenanceId)
                 .orElseThrow(() -> new IllegalArgumentException("Maintenance record not found with id: " + maintenanceId));
     }
 } 

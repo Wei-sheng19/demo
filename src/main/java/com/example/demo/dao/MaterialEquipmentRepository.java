@@ -2,7 +2,7 @@ package com.example.demo.dao;
 import java.util.List;
 
 import com.example.demo.entity.MaterialEquipment;
-import com.example.demo.dto.MaterialEquipmentWithLocationDTO;
+import com.example.demo.dto.equipment.MaterialEquipmentWithLocationDTO;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
@@ -19,7 +19,7 @@ public interface MaterialEquipmentRepository extends JpaRepository<MaterialEquip
 
     // 修改查找特定楼层的特定材料/设备的方法，添加更多位置信息
     @Query("""
-        SELECT new com.example.demo.dto.MaterialEquipmentWithLocationDTO(
+        SELECT new com.example.demo.dto.equipment.MaterialEquipmentWithLocationDTO(
             me.materialEquipmentId, me.category, me.materialName, me.quantityOrArea,
             me.technicalRequirements, me.constructionDepartment, me.maintenanceDepartment,
             me.vendorInfo, me.productCost, me.installationTime, me.lifecycleWarningTime,
@@ -39,7 +39,7 @@ public interface MaterialEquipmentRepository extends JpaRepository<MaterialEquip
 
     // 查找特定楼层的所有不重复材料/设备
     @Query("""
-    SELECT DISTINCT new com.example.demo.dto.MaterialEquipmentWithLocationDTO(
+    SELECT DISTINCT new com.example.demo.dto.equipment.MaterialEquipmentWithLocationDTO(
         me.materialEquipmentId, me.category, me.materialName, me.quantityOrArea,
         me.technicalRequirements, me.constructionDepartment, me.maintenanceDepartment,
         me.vendorInfo, me.productCost, me.installationTime, me.lifecycleWarningTime,
@@ -76,7 +76,7 @@ public interface MaterialEquipmentRepository extends JpaRepository<MaterialEquip
 
     // 查找特定建筑的所有不重复材料/设备
     @Query("""
-    SELECT DISTINCT new com.example.demo.dto.MaterialEquipmentWithLocationDTO(
+    SELECT DISTINCT new com.example.demo.dto.equipment.MaterialEquipmentWithLocationDTO(
         me.materialEquipmentId, me.category, me.materialName, me.quantityOrArea,
         me.technicalRequirements, me.constructionDepartment, me.maintenanceDepartment,
         me.vendorInfo, me.productCost, me.installationTime, me.lifecycleWarningTime,

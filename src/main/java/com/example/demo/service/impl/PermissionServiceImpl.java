@@ -1,7 +1,7 @@
 package com.example.demo.service.impl;
 
 import com.example.demo.dao.PermissionRepository;
-import com.example.demo.dto.PermissionDTO;
+import com.example.demo.dto.auth.PermissionDTO;
 import com.example.demo.entity.Permission;
 import com.example.demo.service.PermissionService;
 import org.springframework.beans.factory.annotation.Autowired;

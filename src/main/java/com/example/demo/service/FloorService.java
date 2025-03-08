@@ -1,6 +1,9 @@
 package com.example.demo.service;
 
-import com.example.demo.dto.*;
+import com.example.demo.dto.building.FloorDTO;
+import com.example.demo.dto.building.RoomDTO;
+import com.example.demo.dto.equipment.FloorPowerRoomDTO;
+
 import java.util.List;
 
 public interface FloorService {

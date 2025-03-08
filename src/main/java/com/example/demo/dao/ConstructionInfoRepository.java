@@ -10,18 +10,7 @@ import java.util.Date;
 
 @Repository
 public interface ConstructionInfoRepository extends JpaRepository<ConstructionInfo, Long> {
-    // 根据项目名称查找
-    ConstructionInfo findByProjectName(String projectName);
-    
-    // 根据审核信息模糊查询
-    List<ConstructionInfo> findByAuditInfoContaining(String auditInfo);
-    
-    // 根据审核状态查询
-    List<ConstructionInfo> findByAuditStatus(ConstructionInfo.AuditStatus status);
-    
-    // 根据时间范围查询
-    List<ConstructionInfo> findByCreatedAtBetween(Date startDate, Date endDate);
-    
+
     // 查询某个建筑的所有施工信息
     @Query("SELECT c FROM ConstructionInfo c WHERE c.room.floor.building.id = :buildingId AND c.isDeleted = false")
     List<ConstructionInfo> findByBuildingId(@Param("buildingId") Long buildingId);
