@@ -24,6 +24,30 @@ permissions:
     resource: "user"
     operation: "update"
     field: "roles"
+  # 校园管理权限
+  - name: "查看校园基本信息"
+    description: "允许查看校园的基本信息"
+    resource: "campus"
+    operation: "read"
+    field: "basic_info"
+
+  - name: "更新校园基本信息"
+    description: "允许更新校园的基本信息"
+    resource: "campus"
+    operation: "update"
+    field: "basic_info"
+
+  - name: "查看校园建筑列表"
+    description: "允许查看校园的建筑列表"
+    resource: "campus"
+    operation: "read"
+    field: "buildings"
+
+  - name: "管理校园建筑列表"
+    description: "允许管理校园的建筑列表"
+    resource: "campus"
+    operation: "update"
+    field: "buildings"
 
 # 建筑管理权限
   - name: "查看建筑基本信息"
@@ -62,6 +86,12 @@ permissions:
     operation: "read"
     field: "basement_info" 
 
+  - name: "查看建筑楼层数"
+    description: "允许查看建筑的楼层数信息"
+    resource: "building"
+    operation: "read"
+    field: "floors"
+
 # 楼层管理权限
   - name: "查看楼层信息"
     description: "允许查看楼层的基本信息"
@@ -86,6 +116,7 @@ permissions:
     resource: "floor"
     operation: "read"
     field: "power_room"
+
 
 # 房间管理权限
   - name: "查看房间基本信息"
@@ -267,6 +298,14 @@ permission_groups:
       - "删除用户"
       - "管理用户角色"
 
+  - name: "校园管理"
+    description: "校园管理相关权限组"
+    permissions:
+      - "查看校园基本信息"
+      - "更新校园基本信息"
+      - "查看校园建筑列表"
+      - "管理校园建筑列表"
+
   - name: "建筑管理"
     description: "建筑管理相关权限组"
     permissions:
@@ -276,6 +315,7 @@ permission_groups:
       - "管理建筑土地档案"
       - "查看建筑分区"
       - "查看建筑地下室"
+      - "查看建筑楼层数"
 
   - name: "楼层管理"
     description: "楼层管理相关权限组"
@@ -350,6 +390,7 @@ roles:
       - "查看建筑基本信息"
       - "查看楼层信息"
       - "查看房间基本信息"
+      - "查看校园基本信息"
     permission_groups: []
     parent_role: null
 
@@ -418,4 +459,5 @@ roles:
       - "施工管理"
       - "功能分区管理"
       - "建设信息管理"
+      - "校园管理"
     parent_role: null 
